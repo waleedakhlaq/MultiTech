@@ -13,7 +13,8 @@ window.Vue = require('vue');
 import { Form, HasError, AlertError } from 'vform';
 
 
-
+import Swal from 'sweetalert2';
+window.Swal = Swal;
 window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
@@ -31,6 +32,15 @@ let routes = [
     {path: '/profile', component: require('./components/Profile.vue').default},
     {path: '/users', component: require('./components/Users.vue').default}
 ]
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  })
+
+  window.Toast = Toast;
 
 import VueRouter from 'vue-router';
 const router = new VueRouter({
